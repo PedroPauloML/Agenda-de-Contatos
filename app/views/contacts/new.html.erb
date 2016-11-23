@@ -1,0 +1,8 @@
+<div class="basic-grey">
+  <%= render partial: '/shared/header' %>
+
+  <% title = 'Novo contato' %>
+  <% description = 'Preencha os campos para cadastrar um novo contato' %>
+
+  <%= render 'form', contact: @contact, title: title, description: description %>
+</div>

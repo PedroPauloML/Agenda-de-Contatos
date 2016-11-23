@@ -1,0 +1,58 @@
+<div class="basic-grey">
+
+  <script>
+    $.notify("<%= "#{notice}" %>", "success");
+  </script>
+
+  <%= render partial: '/shared/header' %>
+
+  <h2>Contato</h2>
+
+  <p>
+    <strong><%= Contact.human_attribute_name("name") %>:</strong>
+    <%= @contact.name %>
+  </p>
+
+  <p>
+    <strong><%= Contact.human_attribute_name("email") %>:</strong>
+    <%= @contact.email %>
+  </p>
+
+  <p>
+    <strong><%= Address.human_attribute_name("street") %>:</strong>
+    <%= @contact.address.street %>
+  </p>
+
+  <p>
+    <strong><%= Address.human_attribute_name("city") %>:</strong>
+    <%= @contact.address.city %>
+  </p>
+
+  <p>
+    <strong><%= Address.human_attribute_name("state") %>:</strong>
+    <%= @contact.address.state %>
+  </p>
+
+  <p>
+    <strong><%= Phone.human_attribute_name("phone") %>:</strong>
+    <% @contact.phones.each do |phone| %>
+      <br>
+      <%= phone.phone %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong><%= Contact.human_attribute_name("kind_id") %>:</strong>
+    <%= @contact.kind.description %>
+  </p>
+
+  <p>
+    <strong><%= Contact.human_attribute_name("rmk") %>:</strong>
+    <%= @contact.rmk %>
+  </p>
+
+  <br>
+
+  <%= link_to t("link_to.edit"), edit_contact_path(@contact), class: "button" %>
+  <%= link_to t("link_to.back"), contacts_path, class: "button" %>
+</div>

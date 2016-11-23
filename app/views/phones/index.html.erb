@@ -1,0 +1,101 @@
+<div style="position: fixed;
+            display: block;
+            right: 0;
+            top: 0;
+            margin: 40px 40px 0 0;">
+  <input type="button"
+         style="float: right;"
+         onmouseover="playScrollUp()"
+         onmouseout="stopScrollUp()"
+         value="&#8679;"/><br/>
+
+  <input type="button"
+         style="margin-top: 30px;
+                float: right;"
+         onmouseover="playScrollDown()"
+         onmouseout="stopScrollDown()"
+         value="&#8681;"/><br/>
+
+</div>
+
+<div class="basic-grey">
+  <script>
+    $.notify("<%= "#{notice}" %>", "success");
+  </script>
+
+  <%= render partial: '/shared/header' %>
+
+  <%= link_to "+", new_phone_path, class: "button_new" %>
+
+  <h2><%= "#{t("messages.listing")} #{@phones.model.model_name.human(count: @phones.size)}" %></h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="phone"><%= Phone.human_attribute_name("phone") %></th>
+        <th><%= Phone.human_attribute_name("contact_id") %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @phones.each do |phone| %>
+        <tr style="background: <%= cycle('#f0f0f5', 'white') %>">
+          <td class="phone"><%= phone.phone %></td>
+          <td><%= phone.contact.name %></td>
+          <td><%= link_to t("link_to.show"), phone %></td>
+          <td><%= link_to t("link_to.edit"), edit_phone_path(phone) %></td>
+          <td><%= link_to t("link_to.destroy"), phone, method: :delete, data: { confirm: t("messages.confirm") } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br><br>
+
+  <div class="paginate"><%= paginate @phones %></div>
+
+</div>
+
+<script>
+var interval;
+
+function playScrollUp(){
+  ScrollUp();
+  interval = setInterval(ScrollUp, 50);
+}
+
+function stopScrollUp() {
+  clearInterval(interval);
+}
+
+function playScrollDown(){
+  ScrollDown();
+  interval = setInterval(ScrollDown, 50);
+}
+
+function stopScrollDown() {
+  clearInterval(interval);
+}
+
+function ScrollUp(){
+  if(window.scrollY > 0){
+    window.scrollTo(0, window.scrollY - 5);
+  }
+}
+
+function ScrollDown(){
+  if(window.scrollY < document.body.scrollHeight){
+    window.scrollTo(0, window.scrollY + 5);
+  }
+}
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+    break;
+    }
+  }
+}
+</script>

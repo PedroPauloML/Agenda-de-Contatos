@@ -1,0 +1,8 @@
+<div class="basic-grey">
+  <%= render partial: '/shared/header' %>
+
+  <% title = 'Novo telefone' %>
+  <% description = 'Preencha os campos para cadastrar um novo telefone' %>
+
+  <%= render 'form', phone: @phone, title: title, description: description %>
+</div>

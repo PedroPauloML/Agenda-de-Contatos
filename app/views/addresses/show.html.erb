@@ -1,0 +1,34 @@
+<div class="basic-grey">
+  <script>
+    $.notify("<%= "#{notice}" %>", "success");
+  </script>
+
+  <%= render partial: '/shared/header' %>
+
+  <h2>Endereço</h2>
+
+  <p>
+    <strong><%= Address.human_attribute_name("street") %>:</strong>
+    <%= @address.street %>
+  </p>
+
+  <p>
+    <strong><%= Address.human_attribute_name("city") %>:</strong>
+    <%= @address.city %>
+  </p>
+
+  <p>
+    <strong><%= Address.human_attribute_name("state") %>:</strong>
+    <%= @address.state %>
+  </p>
+
+  <p>
+    <strong><%= Address.human_attribute_name("contact_id") %>:</strong>
+    <%= @address.contact.name %>
+  </p>
+
+  <br>
+
+  <%= link_to t("link_to.edit"), edit_address_path(@address), class: "button" %>
+  <%= link_to t("link_to.back"), addresses_path, class: "button" %>
+</div>

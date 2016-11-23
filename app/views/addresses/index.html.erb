@@ -1,0 +1,43 @@
+<div class="basic-grey">
+
+  <script>
+    $.notify("<%= "#{notice}" %>", "success");
+  </script>
+
+  <%= render partial: '/shared/header' %>
+
+  <%= link_to "+", new_address_path, class: "button_new" %>
+
+  <h2><%= "#{t("messages.listing")} #{@addresses.model.model_name.human(count: @addresses.size)}" %></h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th><%= @addresses.model.human_attribute_name("street") %></th>
+        <th><%= @addresses.model.human_attribute_name("city") %></th>
+        <th><%= @addresses.model.human_attribute_name("state") %></th>
+        <th><%= @addresses.model.human_attribute_name("contact_id") %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @addresses.each do |address| %>
+        <tr style="background: <%= cycle('#f0f0f5', 'white') %>" >
+          <td><%= address.street %></td>
+          <td><%= address.city %></td>
+          <td><%= address.state %></td>
+          <td><%= address.contact.name %></td>
+          <td><%= link_to t("link_to.show"), address %></td>
+          <td><%= link_to t("link_to.edit"), edit_address_path(address) %></td>
+          <td><%= link_to t("link_to.destroy"), address, method: :delete, data: { confirm: t(" messages.confirm")} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <div class="paginate"><%= paginate @addresses %></div>
+
+</div>

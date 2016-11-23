@@ -1,0 +1,24 @@
+<div class="basic-grey">
+  <script>
+    $.notify("<%= "#{notice}" %>", "success");
+  </script>
+
+  <%= render partial: '/shared/header' %>
+
+  <h2>Telefone</h2>
+
+  <p>
+    <strong><%= Phone.human_attribute_name("phone") %>:</strong>
+    <%= @phone.phone %>
+  </p>
+
+  <p>
+    <strong><%= Phone.human_attribute_name("contact_id") %>:</strong>
+    <%= @phone.contact.name %>
+  </p>
+
+  <br>
+
+  <%= link_to t("link_to.edit"), edit_phone_path(@phone), class: "button" %>
+  <%= link_to t("link_to.back"), phones_path, class: "button" %>
+</div>

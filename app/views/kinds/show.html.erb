@@ -1,0 +1,19 @@
+<div class="basic-grey">
+  <script>
+    $.notify("<%= "#{notice}" %>", "success");
+  </script>
+
+  <%= render partial: '/shared/header' %>
+
+  <h2>Tipo</h2>
+
+  <p>
+    <strong><%= Kind.human_attribute_name("description") %>:</strong>
+    <%= @kind.description %>
+  </p>
+
+  <br>
+
+  <%= link_to t("link_to.edit"), edit_kind_path(@kind), class: "button" %>
+  <%= link_to t("link_to.back"), kinds_path, class: "button" %>
+</div>

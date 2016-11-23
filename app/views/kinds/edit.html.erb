@@ -1,0 +1,8 @@
+<div class="basic-grey">
+  <%= render partial: '/shared/header' %>
+
+  <% title = 'Editando tipo' %>
+  <% description = 'Modifique os campos para editar o tipo' %>
+
+  <%= render 'form', kind: @kind, title: title, description: description %>
+</div>
